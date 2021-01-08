@@ -11,7 +11,48 @@
   <meta name="amp-script-src" content="">
   
   <title>Home</title>
-  
+  <!-- Load Stripe.js on your website. -->
+<script src="https://js.stripe.com/v3"></script>
+
+
+
+<div id="error-message"></div>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_live_BhU4dl71ZRHq0OXwxw73f0nf00eoyzTeS9');
+
+  	function buy(){
+    /*
+     * When the customer clicks on the button, redirect
+     * them to Checkout.
+     */
+    stripe.redirectToCheckout({
+      lineItems: [{price: 'price_1I7JZnBYlYseBpL4J3Y7RndY', quantity: 1}],
+      mode: 'payment',
+      /*
+       * Do not rely on the redirect to the successUrl for fulfilling
+       * purchases, customers may not always reach the success_url after
+       * a successful payment.
+       * Instead use one of the strategies described in
+       * https://stripe.com/docs/payments/checkout/fulfill-orders
+       */
+      successUrl: window.location.protocol + '//www.google.com',
+      cancelUrl: window.location.protocol + '//www.youtube.com',
+    })
+    .then(function (result) {
+      if (result.error) {
+        /*
+         * If `redirectToCheckout` fails due to a browser or network
+         * error, display the localized error message to your customer.
+         */
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  }
+})();
+</script>
 <link rel="canonical" href="./">
  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
 <noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
@@ -385,7 +426,7 @@ body{font-family: Inter;}blockquote{border-color: #005af0;}div[submit-success] >
 <br>8 Renderings (Images)<br>60 seconds Architectural Video Walk-through
 <br>Source File Included
 <br>Guaranteed Delivery in 8 Days<br>2 Revisions Included</strong><br><strong>30 Day Money Back Guarantee&nbsp;</strong><br></p>
-                    <div class="mbr-section-btn align-left"><a class="btn btn-md btn-success display-4" href="https://mobiri.se"><span class="fa fa-credit-card mbr-iconfont mbr-iconfont-btn"><svg width="16" height="16" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M1824 128q66 0 113 47t47 113v1216q0 66-47 113t-113 47h-1600q-66 0-113-47t-47-113v-1216q0-66 47-113t113-47h1600zm-1600 128q-13 0-22.5 9.5t-9.5 22.5v224h1664v-224q0-13-9.5-22.5t-22.5-9.5h-1600zm1600 1280q13 0 22.5-9.5t9.5-22.5v-608h-1664v608q0 13 9.5 22.5t22.5 9.5h1600zm-1504-128v-128h256v128h-256zm384 0v-128h384v128h-384z"></path></svg></span>Get Now&nbsp;</a></div>
+                    <div class="mbr-section-btn align-left"><a class="btn btn-md btn-success display-4" href="javascript:buy()"><span class="fa fa-credit-card mbr-iconfont mbr-iconfont-btn"><svg width="16" height="16" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M1824 128q66 0 113 47t47 113v1216q0 66-47 113t-113 47h-1600q-66 0-113-47t-47-113v-1216q0-66 47-113t113-47h1600zm-1600 128q-13 0-22.5 9.5t-9.5 22.5v224h1664v-224q0-13-9.5-22.5t-22.5-9.5h-1600zm1600 1280q13 0 22.5-9.5t9.5-22.5v-608h-1664v608q0 13 9.5 22.5t22.5 9.5h1600zm-1504-128v-128h256v128h-256zm384 0v-128h384v128h-384z"></path></svg></span>Get Now&nbsp;</a></div>
                 </div>
             </div>
         </div>
