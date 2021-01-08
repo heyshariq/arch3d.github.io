@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="amp-script-src" content="">
   
-  <title>Home</title>
+  <title>Arch3D | Architectural Rendering Services</title>
 
 <!-- Load Stripe.js on your website. -->
 <script src="https://js.stripe.com/v3"></script>
@@ -427,7 +427,44 @@ body{font-family: Inter;}blockquote{border-color: #005af0;}div[submit-success] >
 <br>8 Renderings (Images)<br>60 seconds Architectural Video Walk-through
 <br>Source File Included
 <br>Guaranteed Delivery in 8 Days<br>2 Revisions Included</strong><br><strong>30 Day Money Back Guarantee&nbsp;</strong><br></p>
-                    <div  class="mbr-section-btn align-left"><a onClick = "javascript:buy()" class="btn btn-md btn-success display-4 "><span class="fa fa-credit-card mbr-iconfont mbr-iconfont-btn"><svg width="16" height="16" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M1824 128q66 0 113 47t47 113v1216q0 66-47 113t-113 47h-1600q-66 0-113-47t-47-113v-1216q0-66 47-113t113-47h1600zm-1600 128q-13 0-22.5 9.5t-9.5 22.5v224h1664v-224q0-13-9.5-22.5t-22.5-9.5h-1600zm1600 1280q13 0 22.5-9.5t9.5-22.5v-608h-1664v608q0 13 9.5 22.5t22.5 9.5h1600zm-1504-128v-128h256v128h-256zm384 0v-128h384v128h-384z"></path></svg></span>Get Now&nbsp;</a></div>
+                    <div  class="mbr-section-btn align-left">
+      <div id="smart-button-container">
+      <div style="text-align: center;">
+        <div id="paypal-button-container"></div>
+      </div>
+    </div>
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
+  <script>
+    function initPayPalButton() {
+      paypal.Buttons({
+        style: {
+          shape: 'rect',
+          color: 'blue',
+          layout: 'vertical',
+          label: 'paypal',
+          
+        },
+
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{"description":"Arch3D Architectural Rendering ","amount":{"currency_code":"USD","value":499}}]
+          });
+        },
+
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+          });
+        },
+
+        onError: function(err) {
+          console.log(err);
+        }
+      }).render('#paypal-button-container');
+    }
+    initPayPalButton();
+  </script></div>
+                    
                 </div>
             </div>
         </div>
@@ -444,8 +481,7 @@ body{font-family: Inter;}blockquote{border-color: #005af0;}div[submit-success] >
                 © Copyright 2021 Arch3D</strong><br><strong>Some Rights Reserved</strong><br> contact.arch3d@yahoo.com</p>
         </div>
     </div>
-</section><section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;"><a href="https://mobirise.site/f" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a><p style="flex: 0 0 auto; margin:0; padding-right:1rem;">Designed with Mobirise <a href="https://mobirise.site/j" style="color:#aaa;">page</a> maker</p></section>
-  
+</section>
   
 </body>
 </html>
